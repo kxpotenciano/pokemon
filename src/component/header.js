@@ -1,7 +1,7 @@
 export default function Header(){
     return(
         <div>
-        <div className="text-center text-5xl text-purple-300"><a href="http://localhost:3000/home">POKEMON SEARCH </a></div><br></br>
+        <div className="text-center text-5xl text-white font-bold"><a href="http://localhost:3000/home">POKEMON SEARCH </a></div><br></br>
         <div class="inline-flex" role="group">
             <button
                 type="button"

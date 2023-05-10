@@ -50,7 +50,7 @@ export default function PokemonSearch(){
                 move2: response.data.moves[1].move['name'],
                 move3: response.data.moves[2].move['name'],
                 move4: response.data.moves[3].move['name'],
-                hp: response.data.stats[0].base_stats,
+                hp: response.data.stats[0].base_stat,
                 attack: response.data.stats[1].base_stat,
                 defense: response.data.stats[2].base_stat,
                 special_attack: response.data.stats[3].base_stat,
@@ -70,7 +70,7 @@ export default function PokemonSearch(){
         <br/>
         <div class="flex flex-col" role="group">
             <form>
-                <input className="w-[300px] h-7 w-[250px] px-2 mb-2 text-base text-gray-700 placeholder-white border rounded-lg focus:shadow-outline text-center" 
+                <input className="w-[300px] h-7 w-[250px] px-2 mb-2 text-base text-pink-500 placeholder-pink border rounded-lg focus:shadow-outline text-center" 
                 type="text"
                 onChange={(event) => {setPokeName(event.target.value)}}
                 /> <br/>
@@ -82,8 +82,8 @@ export default function PokemonSearch(){
         <div className="inline-block">
             {!chosenPokemon ? (<h1 className="text-white text-2xl">Choose a Pokemon</h1>) : (
                 <>
-                <div class=" bg-white border border-pink-200 rounded-lg shadow dark:bg-pink-300 dark:border-white justify-center">
-                    <img src={pokemon.img} className="h-[150px] w-[150px] "/>
+                <div class="inline-block bg-white border border-pink-200 rounded-lg shadow dark:bg-pink-300 dark:border-white justify-center w-[400px] opacity-90">
+                    <img src={pokemon.img} className="inline-block h-[150px] w-[150px] opacity-100"/>
                 <div class="p-5">
                         <p className="mb-3 font-bold text-pink-700 dark:text-pink-600 text-lg">{pokemon.name}</p>
                         <p className="mb-3 font-normal text-pink-700 dark:text-pink-600 text-lg">First Type: {pokemon.type1}</p>
