@@ -39,9 +39,10 @@ export default function PokemonSearch(){
         type: ""
     })
 
-    const searchPokemon = (event) => {
+    const searchPokemon = (event) => {  
+        event.preventDefault();  
         axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeName}`).then((response) => 
-        {
+        {      
             if (response.data.types.length > 1)
             {setPokemon({
                 name: pokeName, 
@@ -65,7 +66,6 @@ export default function PokemonSearch(){
                 name: pokeName, 
                 img: response.data.sprites.front_default,
                 type1: response.data.types[0].type['name'],
-                type2: null,
                 move1: response.data.moves[0].move['name'],
                 move2: response.data.moves[1].move['name'],
                 move3: response.data.moves[2].move['name'],
@@ -78,27 +78,26 @@ export default function PokemonSearch(){
                 speed: response.data.stats[5].base_stat,
                 
             })}
-
             setChosenPokemon(true);
-            axios.get(`https://pokeapi.co/api/v2/move/${pokemon.move1}`).then((response) => {
+            axios.get(`https://pokeapi.co/api/v2/move/${response.data.moves[0].move['name']}`).then((response) => {
                 setMoves1({
                     pp: response.data.pp,
                     type: response.data.type.name
                 })
             })
-            axios.get(`https://pokeapi.co/api/v2/move/${pokemon.move2}`).then((response) => {
+            axios.get(`https://pokeapi.co/api/v2/move/${response.data.moves[1].move['name']}`).then((response) => {
                 setMoves2({
                     pp: response.data.pp,
                     type: response.data.type.name
                 })
             })
-            axios.get(`https://pokeapi.co/api/v2/move/${pokemon.move3}`).then((response) => {
+            axios.get(`https://pokeapi.co/api/v2/move/${response.data.moves[2].move['name']}`).then((response) => {
                 setMoves3({
                     pp: response.data.pp,
                     type: response.data.type.name
                 })
             })
-            axios.get(`https://pokeapi.co/api/v2/move/${pokemon.move4}`).then((response) => {
+            axios.get(`https://pokeapi.co/api/v2/move/${response.data.moves[3].move['name']}`).then((response) => {
                 setMoves4({
                     pp: response.data.pp,
                     type: response.data.type.name
@@ -106,13 +105,119 @@ export default function PokemonSearch(){
             })
         })
        
-
-        event.preventDefault();  
         }
-
+        
         const pokemonTypeColor1 = (pokemon) => {
             if (pokemon.type1 === "fire"){
                 return "dark:bg-red-200"
+            }
+            if (pokemon.type1 === "water"){
+                return "dark:bg-blue-400"
+            }
+            if (pokemon.type1 === "ice"){
+                return "dark:bg-blue-200"
+            }
+            if (pokemon.type1 === "grass"){
+                return "dark:bg-green-200"
+            }
+            if (pokemon.type1 === "electric"){
+                return "dark:bg-yellow-200"
+            }
+            if (pokemon.type1 === "bug"){
+                return "dark:bg-green-400"
+            }
+            if (pokemon.type1 === "flying"){
+                return "dark:bg-purple-200"
+            }
+            if (pokemon.type1 === "ghost"){
+                return "dark:bg-purple-800"
+            }
+            if (pokemon.type1 === "dark"){
+                return "dark:bg-black-200"
+            }
+            if (pokemon.type1 === "dragon"){
+                return "dark:bg-purple-400"
+            }
+            if (pokemon.type1 === "ground"){
+                return "dark:bg-yellow-800"
+            }
+            if (pokemon.type1 === "normal"){
+                return "dark:bg-gray-200"
+            }
+            if (pokemon.type1 === "poison"){
+                return "dark:bg-purple-600"
+            }
+            if (pokemon.type1 === "steel"){
+                return "dark:bg-gray-400"
+            }
+            if (pokemon.type1 === "rock"){
+                return "dark:bg-yellow-600"
+            }
+            if (pokemon.type1 === "fairy"){
+                return "dark:bg-pink-200"
+            }
+            if (pokemon.type1 === "fighting"){
+                return "dark:bg-red-400"
+            }
+            if (pokemon.type1 === "psychic"){
+                return "dark:bg-pink-400"
+            }
+        }
+
+        const pokemonTypeColor2 = (pokemon) => {
+            if (pokemon.type2 === "fire"){
+                return "dark:bg-red-200"
+            }
+            if (pokemon.type2 === "water"){
+                return "dark:bg-blue-400"
+            }
+            if (pokemon.type2 === "ice"){
+                return "dark:bg-blue-200"
+            }
+            if (pokemon.type2 === "grass"){
+                return "dark:bg-green-200"
+            }
+            if (pokemon.type2 === "electric"){
+                return "dark:bg-yellow-200"
+            }
+            if (pokemon.type2 === "bug"){
+                return "dark:bg-green-400"
+            }
+            if (pokemon.type1 === "flying"){
+                return "dark:bg-purple-200"
+            }
+            if (pokemon.type2 === "ghost"){
+                return "dark:bg-purple-800"
+            }
+            if (pokemon.type2 === "dark"){
+                return "dark:bg-black-200"
+            }
+            if (pokemon.type2 === "dragon"){
+                return "dark:bg-purple-400"
+            }
+            if (pokemon.type2 === "ground"){
+                return "dark:bg-yellow-800"
+            }
+            if (pokemon.type2 === "normal"){
+                return "dark:bg-gray-200"
+            }
+            if (pokemon.type2 === "poison"){
+                return "dark:bg-purple-600"
+            }
+            if (pokemon.type2 === "steel"){
+                return "dark:bg-gray-400"
+            }
+            if (pokemon.type2 === "rock"){
+                return "dark:bg-yellow-600"
+            }
+            if (pokemon.type2 === "fairy"){
+                return "dark:bg-pink-200"
+            }
+            if (pokemon.type2 === "fighting"){
+                return "dark:bg-red-400"
+            }
+            if (pokemon.type2 === "psychic"){
+                return "dark:bg-pink-400"
             }
         }
         
@@ -138,7 +243,7 @@ export default function PokemonSearch(){
                     <img src={pokemon.img} className="inline-block h-[150px] w-[150px] opacity-100"/>
                 <div class="p-5">
                         <p className="mb-3 font-bold text-pink-700 dark:text-pink-600 text-lg">{pokemon.name}</p>
-                        <p className="mb-3 font-normal text-pink-700 dark:text-pink-600 text-lg">Type: <div className={`inline-block border border-pink-200 rounded-lg shadow ${pokemonTypeColor1} dark:border-white justify-center w-[100px] text-white`} >{pokemon.type1}</div> <div className=" inline-block border border-pink-200 rounded-lg shadow dark:bg-white dark:border-white justify-center w-[100px] text-gray-600">{pokemon.type2}</div></p>
+                        <p className="mb-3 font-normal text-pink-700 dark:text-pink-600 text-lg">Type: <div className={`inline-block border border-pink-200 rounded-lg shadow ${pokemonTypeColor1(pokemon)} dark:border-white justify-center w-[100px] text-white`} >{pokemon.type1}</div> <div className={`inline-block border border-pink-200 rounded-lg shadow ${pokemonTypeColor2(pokemon)} dark:border-white justify-center w-[100px] text-white`}>{pokemon.type2}</div></p>
                         <p className="mb-3 font-normal text-pink-700 dark:text-pink-600 text-lg">Move 1: {pokemon.move1} [Type: {moves1.type} PP: {moves1.pp}/{moves1.pp}]</p>
                         <p className="mb-3 font-normal text-pink-700 dark:text-pink-600 text-lg">Move 2: {pokemon.move2} [Type: {moves2.type} PP: {moves2.pp}/{moves2.pp}]</p>
                         <p className="mb-3 font-normal text-pink-700 dark:text-pink-600 text-lg">Move 3: {pokemon.move3} [Type: {moves3.type} PP: {moves3.pp}/{moves3.pp}]</p>
@@ -154,4 +259,3 @@ export default function PokemonSearch(){
         </>
     )
 }
-
