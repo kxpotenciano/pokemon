@@ -34,7 +34,7 @@ export default function MoveSearch(){
                 /> <br/>
                 <button className="h-6 px-5 text-white transition-colors duration-150 bg-pink-400 rounded-full focus:shadow-outline hover:bg-pink-200"
                     onClick={searchMove}
-                >Get Pokemon Move</button>
+                >Search</button>
             </form> <br/>
             <div className="inline-block">
             {!chosenMove ? (<h1 className="text-white text-2xl">Choose a Move</h1>) : (
