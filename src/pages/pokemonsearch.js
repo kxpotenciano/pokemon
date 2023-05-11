@@ -109,7 +109,7 @@ export default function PokemonSearch(){
         
         const pokemonTypeColor1 = (pokemon) => {
             if (pokemon.type1 === "fire"){
-                return "dark:bg-red-200"
+                return "dark:bg-red-200 text-orange-800"
             }
             if (pokemon.type1 === "water"){
                 return "dark:bg-blue-400"
@@ -118,7 +118,7 @@ export default function PokemonSearch(){
                 return "dark:bg-blue-200"
             }
             if (pokemon.type1 === "grass"){
-                return "dark:bg-green-200"
+                return "dark:bg-green-200 text-green-600"
             }
             if (pokemon.type1 === "electric"){
                 return "dark:bg-yellow-200"
